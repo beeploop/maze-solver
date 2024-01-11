@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.Iterator;
 import java.util.Stack;
 
 public class Player {
@@ -32,25 +33,23 @@ public class Player {
         if (curr == 8) {
             panel.mazeThread = null;
             System.out.println("Found a route");
+            printStack();
+            return;
         }
 
         if (top != 1 && top != 3) {
             yPos -= 1;
-            System.out.println("going up");
             Node pos = new Node(xPos, yPos);
             visited.push(pos);
         } else if (right != 1 && right != 3) {
-            System.out.println("going right");
             xPos += 1;
             Node pos = new Node(xPos, yPos);
             visited.push(pos);
         } else if (bottom != 1 && bottom != 3) {
-            System.out.println("going bottom");
             yPos += 1;
             Node pos = new Node(xPos, yPos);
             visited.push(pos);
         } else if (left != 1 && left != 3) {
-            System.out.println("going left");
             xPos -= 1;
             Node pos = new Node(xPos, yPos);
             visited.push(pos);
@@ -63,6 +62,14 @@ public class Player {
             System.out.println("y: " + yPos);
         }
 
+    }
+
+    public void printStack() {
+        Iterator<Node> pos = visited.iterator();
+        while (pos.hasNext()) {
+            Node val = pos.next();
+            System.out.println("(" + val.xData + ", " + val.yData + ")");
+        }
     }
 }
 
