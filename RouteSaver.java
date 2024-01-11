@@ -13,6 +13,7 @@ public class RouteSaver {
     public void saveRoute() {
         try {
             File file = new File("route.txt");
+            file.delete();
             if (!file.createNewFile()) {
                 System.out.println("File already exists!");
                 System.out.println("aborting...");
