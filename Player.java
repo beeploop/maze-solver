@@ -4,6 +4,8 @@ import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.Stack;
 
+import javax.swing.JOptionPane;
+
 public class Player {
     Stack<Node> visited = new Stack<Node>();
     Panel panel;
@@ -33,8 +35,8 @@ public class Player {
 
         if (curr == 8) {
             panel.mazeThread = null;
-            System.out.println("Found a route");
             printStack();
+            JOptionPane.showMessageDialog(panel, "Found a route", "Success", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -61,6 +63,7 @@ public class Player {
                 yPos = lastPos.yData;
             } catch (EmptyStackException e) {
                 System.out.println("no possible route found");
+                JOptionPane.showMessageDialog(panel, "No possible route found", "Error", JOptionPane.ERROR_MESSAGE);
                 panel.mazeThread = null;
                 return;
             }
