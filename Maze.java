@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 public class Maze {
     final int maze[][] = {
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 1, 5, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 },
             { 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1 },
             { 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1 },
             { 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1 },
@@ -14,7 +14,7 @@ public class Maze {
             { 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
             { 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1 },
             { 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 8, 1 },
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
     };
     final int tileSize;
@@ -31,6 +31,10 @@ public class Maze {
 
                 if (maze[row][col] == 1) {
                     g.setPaint(Color.orange);
+                } else if (maze[row][col] == 5) {
+                    g.setPaint(Color.green);
+                } else if (maze[row][col] == 8) {
+                    g.setPaint(Color.red);
                 } else {
                     g.setPaint(Color.white);
                 }
@@ -40,5 +44,9 @@ public class Maze {
                 g.drawRect(col * tileSize, row * tileSize, tileSize, tileSize);
             }
         }
+    }
+
+    public void update() {
+
     }
 }

@@ -14,6 +14,8 @@ public class Runner extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
+        panel.startThread();
     }
 
     public static void main(String[] args) {
