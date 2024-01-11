@@ -37,6 +37,7 @@ public class Player {
             panel.mazeThread = null;
             printStack();
             JOptionPane.showMessageDialog(panel, "Found a route", "Success", JOptionPane.INFORMATION_MESSAGE);
+            new RouteSaver(visited).saveRoute();
             return;
         }
 
