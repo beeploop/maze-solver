@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -54,12 +55,15 @@ public class Player {
             Node pos = new Node(xPos, yPos);
             visited.push(pos);
         } else {
-            System.out.println("stuck");
-            Node lastPos = visited.pop();
-            xPos = lastPos.xData;
-            yPos = lastPos.yData;
-            System.out.println("x: " + xPos);
-            System.out.println("y: " + yPos);
+            try {
+                Node lastPos = visited.pop();
+                xPos = lastPos.xData;
+                yPos = lastPos.yData;
+            } catch (EmptyStackException e) {
+                System.out.println("no possible route found");
+                panel.mazeThread = null;
+                return;
+            }
         }
 
     }
