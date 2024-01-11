@@ -38,7 +38,7 @@ public class Player {
             printStack();
             JOptionPane.showMessageDialog(panel, "Found a route", "Success", JOptionPane.INFORMATION_MESSAGE);
             new RouteSaver(visited).saveRoute();
-            return;
+            System.exit(0);
         }
 
         if (top != 1 && top != 3) {
@@ -66,7 +66,7 @@ public class Player {
                 System.out.println("no possible route found");
                 JOptionPane.showMessageDialog(panel, "No possible route found", "Error", JOptionPane.ERROR_MESSAGE);
                 panel.mazeThread = null;
-                return;
+                System.exit(0);
             }
         }
 
