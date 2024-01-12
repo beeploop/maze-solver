@@ -25,6 +25,10 @@ public class Player {
     }
 
     public void update() {
+        normalMovement();
+    }
+
+    public void normalMovement() {
         int top = maze.maze[yPos - 1][xPos];
         int right = maze.maze[yPos][xPos + 1];
         int bottom = maze.maze[yPos + 1][xPos];
@@ -69,7 +73,6 @@ public class Player {
                 System.exit(0);
             }
         }
-
     }
 
     public void printStack() {
