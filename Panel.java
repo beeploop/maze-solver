@@ -6,8 +6,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class Panel extends JPanel implements Runnable {
-    final int width = 400;
-    final int height = 400;
+    final int width;
+    final int height;
     final int FPS = 4;
 
     Thread mazeThread;
@@ -15,11 +15,15 @@ public class Panel extends JPanel implements Runnable {
     Player player;
 
     Panel() {
+        maze = new Maze();
+        player = new Player(this, maze);
+
+        width = maze.maze.length * maze.tileSize;
+        height = maze.maze[0].length * maze.tileSize;
+
         this.setPreferredSize(new Dimension(width, height));
         this.setBackground(Color.black);
 
-        maze = new Maze(this);
-        player = new Player(this, maze);
     }
 
     public void paintComponent(Graphics g) {

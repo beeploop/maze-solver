@@ -18,11 +18,9 @@ public class Maze {
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
     };
     final int tileSize;
-    Panel panel;
 
-    Maze(Panel panel) {
-        this.panel = panel;
-        tileSize = panel.width / maze[0].length;
+    Maze() {
+        tileSize = 40;
     }
 
     public void draw(Graphics2D g) {
