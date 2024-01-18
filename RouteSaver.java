@@ -1,12 +1,10 @@
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Iterator;
-import java.util.Stack;
 
 public class RouteSaver {
-    Stack<Node> route = new Stack<Node>();
+    PosStack route = new PosStack();
 
-    RouteSaver(Stack<Node> route) {
+    RouteSaver(PosStack route) {
         this.route = route;
     }
 
@@ -22,11 +20,8 @@ public class RouteSaver {
 
             FileWriter writer = new FileWriter(file);
 
-            Iterator<Node> pos = route.iterator();
-
-            while (pos.hasNext()) {
-                Node value = pos.next();
-
+            while (route.size > 0) {
+                Node value = route.pop();
                 writer.write("(" + value.xData + "," + value.yData + ")\n");
             }
 

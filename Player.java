@@ -1,13 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.EmptyStackException;
-import java.util.Iterator;
-import java.util.Stack;
 
 import javax.swing.JOptionPane;
 
 public class Player {
-    Stack<Node> visited = new Stack<Node>();
+    PosStack visited = new PosStack();
     Panel panel;
     Maze maze;
     int xPos, yPos;
@@ -39,7 +36,6 @@ public class Player {
 
         if (curr == 8) {
             panel.mazeThread = null;
-            printStack();
             JOptionPane.showMessageDialog(panel, "Found a route", "Success", JOptionPane.INFORMATION_MESSAGE);
             new RouteSaver(visited).saveRoute();
             System.exit(0);
@@ -62,34 +58,16 @@ public class Player {
             Node pos = new Node(xPos, yPos);
             visited.push(pos);
         } else {
-            try {
-                Node lastPos = visited.pop();
-                xPos = lastPos.xData;
-                yPos = lastPos.yData;
-            } catch (EmptyStackException e) {
+            Node lastPos = visited.pop();
+            if (lastPos == null) {
                 System.out.println("no possible route found");
                 JOptionPane.showMessageDialog(panel, "No possible route found", "Error", JOptionPane.ERROR_MESSAGE);
                 panel.mazeThread = null;
                 System.exit(0);
             }
+
+            xPos = lastPos.xData;
+            yPos = lastPos.yData;
         }
-    }
-
-    public void printStack() {
-        Iterator<Node> pos = visited.iterator();
-        while (pos.hasNext()) {
-            Node val = pos.next();
-            System.out.println("(" + val.xData + ", " + val.yData + ")");
-        }
-    }
-}
-
-class Node {
-    int xData;
-    int yData;
-
-    Node(int x, int y) {
-        xData = x;
-        yData = y;
     }
 }
