@@ -1,7 +1,7 @@
 build:
 	javac Runner.java
 
-run: clean build
+run: build
 	java Runner 
 
 clean:
