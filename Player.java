@@ -17,7 +17,7 @@ public class Player {
     }
 
     public void draw(Graphics2D g) {
-        g.setPaint(Color.green);
+        g.setPaint(Color.blue);
         g.fillOval(xPos * maze.tileSize, yPos * maze.tileSize, maze.tileSize, maze.tileSize);
     }
 

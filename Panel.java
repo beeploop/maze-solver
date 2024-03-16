@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 public class Panel extends JPanel implements Runnable {
     final int width;
     final int height;
-    final int FPS = 4;
+    final int FPS = 2;
 
     Thread mazeThread;
     Maze maze;
@@ -40,7 +40,7 @@ public class Panel extends JPanel implements Runnable {
     }
 
     public void run() {
-        double drawInterval = 1000000000 / FPS;
+        double drawInterval = 1_000_000_000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
