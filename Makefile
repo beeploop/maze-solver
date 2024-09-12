@@ -5,4 +5,5 @@ run: build
 	java Runner 
 
 clean:
-	rm *.class
+	rm -f *.class
+	rm route.txt
