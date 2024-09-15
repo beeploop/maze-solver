@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Color;
+
 public class Config {
     private static Config instance = null;
 
@@ -9,10 +11,14 @@ public class Config {
 
     private int FPS;
     private Maze maze;
+    public Color wallColor;
+    public Color pathColor;
 
     private Config() {
         FPS = DEFAULT_FPS;
         maze = new Maze(SCRN_SIZE);
+        wallColor = Color.BLACK;
+        pathColor = Color.WHITE;
     }
 
     public static Config getInstance() {
@@ -34,7 +40,9 @@ public class Config {
         return maze;
     }
 
-    public void setMaze(Maze maze) {
-        this.maze = maze;
+    public void setMaze(char[][] maze) {
+        int tileSize = SCRN_SIZE / maze.length;
+        Maze m = new Maze(maze, tileSize);
+        this.maze = m;
     }
 }
