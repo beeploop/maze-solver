@@ -4,18 +4,15 @@ public class Config {
     private static Config instance = null;
 
     // DEAULTS
-    public final int DEFAULT_FPS = 1;
+    public final int DEFAULT_FPS = 2;
+    public final int SCRN_SIZE = 600;
 
     private int FPS;
-    private int width, height, tileSize;
     private Maze maze;
 
     private Config() {
         FPS = DEFAULT_FPS;
-        tileSize = 40;
-        maze = new Maze(tileSize);
-        width = maze.getMaze().length * tileSize;
-        height = maze.getMaze()[0].length * tileSize;
+        maze = new Maze(SCRN_SIZE);
     }
 
     public static Config getInstance() {
@@ -31,22 +28,6 @@ public class Config {
 
     public void setFPS(int fPS) {
         FPS = fPS;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getTileSize() {
-        return tileSize;
-    }
-
-    public void setTileSize(int tileSize) {
-        this.tileSize = tileSize;
     }
 
     public Maze getMaze() {

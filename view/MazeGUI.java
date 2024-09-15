@@ -28,7 +28,7 @@ public class MazeGUI extends JFrame implements Runnable {
 
         player = new Player();
 
-        canvas = new Canvas(config.getWidth(), config.getHeight());
+        canvas = new Canvas(config.SCRN_SIZE, config.SCRN_SIZE);
         canvas.addDrawable(config.getMaze());
         canvas.addDrawable(player);
 
@@ -36,6 +36,7 @@ public class MazeGUI extends JFrame implements Runnable {
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
         setVisible(true);
 
         path.push(player.getPos());

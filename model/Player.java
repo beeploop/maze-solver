@@ -16,10 +16,10 @@ public class Player implements Drawable {
     }
 
     public void draw(Graphics2D g) {
-        int posX = pos.getX() * config.getTileSize();
-        int posY = pos.getY() * config.getTileSize();
+        int posX = pos.getX() * config.getMaze().getTileSize();
+        int posY = pos.getY() * config.getMaze().getTileSize();
         g.setPaint(color);
-        g.fillOval(posX, posY, config.getTileSize(), config.getTileSize());
+        g.fillOval(posX, posY, config.getMaze().getTileSize(), config.getMaze().getTileSize());
     }
 
     public Color getColor() {
