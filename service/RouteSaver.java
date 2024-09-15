@@ -1,10 +1,15 @@
+package service;
+
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
+
+import model.Node;
 
 public class RouteSaver {
-    PosStack route = new PosStack();
+    ArrayList<Node> route;
 
-    RouteSaver(PosStack route) {
+    public RouteSaver(ArrayList<Node> route) {
         this.route = route;
     }
 
@@ -20,9 +25,9 @@ public class RouteSaver {
 
             FileWriter writer = new FileWriter(file);
 
-            while (route.size > 0) {
-                Node value = route.pop();
-                writer.write("(" + value.xData + "," + value.yData + ")\n");
+            for (int i = 0; i < route.size(); i++) {
+                Node value = route.get(i);
+                writer.write("(" + value.getX() + "," + value.getY() + ")\n");
             }
 
             writer.close();
