@@ -64,7 +64,8 @@ public class MazeGUI extends JFrame implements Runnable {
             if (delta >= 1) {
 
                 Node nextPos = findNextPosition();
-                if (nextPos == null && visited.isEmpty()) {
+                if (nextPos == null && path.isEmpty()) {
+                    System.out.println("No solution found");
                     thread = null;
                     System.exit(0);
                 }
