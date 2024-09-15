@@ -9,7 +9,7 @@ clean:
 	@rm -f *.class
 	@rm -f model/*.class
 	@rm -f view/*.class
-	@rm -f controller/*.class
+	@rm -f service/*.class
 	@rm -f route.txt
 	@rm -rf out/
 	@echo "cleaned"
