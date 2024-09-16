@@ -51,14 +51,21 @@ public class SetupGUI extends JFrame implements ActionListener {
 
         openBtn = new JButton("select map");
         openBtn.addActionListener(this);
-        openBtn.setBounds(10, 60, 150, 50);
+        openBtn.setBounds(10, 70, 150, 50);
         add(openBtn);
 
         String previewMsg = "Preview of selected map";
         preview = new JLabel(previewMsg, JLabel.CENTER);
-        preview.setBounds(170, 10, config.SCRN_SIZE - 180, config.SCRN_SIZE - 60);
+        int prevWidth = config.SCRN_SIZE - 180;
+        preview.setBounds(170, 10, prevWidth, prevWidth);
         preview.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(preview);
+
+        String txt = "<html>Select an image of a maze to use. If no image is selected, default map will be used.</html>";
+        JLabel text = new JLabel(txt);
+        text.setBounds(10, prevWidth + 20, config.SCRN_SIZE - 20, config.SCRN_SIZE - prevWidth - 70);
+        text.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        add(text);
     }
 
     @Override
