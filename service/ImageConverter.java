@@ -11,39 +11,51 @@ import model.Config;
 public class ImageConverter {
     Config config;
     String imagePath;
+    BufferedImage image;
 
     public ImageConverter(String imagePath) {
         config = Config.getInstance();
         this.imagePath = imagePath;
     }
 
-    public char[][] convert() {
+    public void loadImage() throws Exception {
         try {
-            BufferedImage image = ImageIO.read(new File(imagePath));
-            int width = image.getWidth();
-            int height = image.getHeight();
-            char[][] maze = new char[width][height];
-
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    Color c = new Color(image.getRGB(i, j));
-
-                    if (c.equals(config.wallColor)) {
-                        maze[i][j] = '#';
-                        continue;
-                    }
-
-                    if (c.equals(config.pathColor)) {
-                        maze[i][j] = '.';
-                        continue;
-                    }
-                }
-            }
-
-            return maze;
+            image = ImageIO.read(new File(imagePath));
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            throw e;
         }
+    }
+
+    public char[][] convert() {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        char[][] maze = new char[width][height];
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                Color c = new Color(image.getRGB(i, j));
+
+                if (c.equals(config.wallColor)) {
+                    maze[i][j] = '#';
+                    continue;
+                }
+
+                if (c.equals(config.pathColor)) {
+                    maze[i][j] = '.';
+                    continue;
+                }
+            }
+        }
+
+        return maze;
+    }
+
+    public BufferedImage getImage() throws Exception {
+        if (image == null) {
+            throw new Exception("Image not loaded");
+        }
+
+        return image;
     }
 }
